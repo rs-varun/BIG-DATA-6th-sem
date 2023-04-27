@@ -1,0 +1,273 @@
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ start-all.sh
+WARNING: Attempting to start all Apache Hadoop daemons as hadoop in 10 seconds.
+WARNING: This is not a recommended production deployment configuration.
+WARNING: Use CTRL-C to abort.
+Starting namenodes on [localhost]
+Starting datanodes
+Starting secondary namenodes [bmscecse-HP-Elite-Tower-600-G9-Desktop-PC]
+Starting resourcemanager
+Starting nodemanagers
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ jps
+4257 SecondaryNameNode
+3825 NameNode
+5146 Jps
+4538 ResourceManager
+4714 NodeManager
+4014 DataNode
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hdfs fs -ld
+ERROR: fs is not COMMAND nor fully qualified CLASSNAME.
+Usage: hdfs [OPTIONS] SUBCOMMAND [SUBCOMMAND OPTIONS]
+
+  OPTIONS is none or any of:
+
+--buildpaths                       attempt to add class files from build tree
+--config dir                       Hadoop config directory
+--daemon (start|status|stop)       operate on a daemon
+--debug                            turn on shell script debug mode
+--help                             usage information
+--hostnames list[,of,host,names]   hosts to use in worker mode
+--hosts filename                   list of hosts to use in worker mode
+--loglevel level                   set the log4j level for this command
+--workers                          turn on worker mode
+
+  SUBCOMMAND is one of:
+
+
+    Admin Commands:
+
+cacheadmin           configure the HDFS cache
+crypto               configure HDFS encryption zones
+debug                run a Debug Admin to execute HDFS debug commands
+dfsadmin             run a DFS admin client
+dfsrouteradmin       manage Router-based federation
+ec                   run a HDFS ErasureCoding CLI
+fsck                 run a DFS filesystem checking utility
+haadmin              run a DFS HA admin client
+jmxget               get JMX exported values from NameNode or DataNode.
+oev                  apply the offline edits viewer to an edits file
+oiv                  apply the offline fsimage viewer to an fsimage
+oiv_legacy           apply the offline fsimage viewer to a legacy fsimage
+storagepolicies      list/get/set/satisfyStoragePolicy block storage policies
+
+    Client Commands:
+
+classpath            prints the class path needed to get the hadoop jar and the required libraries
+dfs                  run a filesystem command on the file system
+envvars              display computed Hadoop environment variables
+fetchdt              fetch a delegation token from the NameNode
+getconf              get config values from configuration
+groups               get the groups which users belong to
+lsSnapshottableDir   list all snapshottable dirs owned by the current user
+snapshotDiff         diff two snapshots of a directory or diff the current directory contents with a snapshot
+version              print the version
+
+    Daemon Commands:
+
+balancer             run a cluster balancing utility
+datanode             run a DFS datanode
+dfsrouter            run the DFS router
+diskbalancer         Distributes data evenly among disks on a given node
+httpfs               run HttpFS server, the HDFS HTTP Gateway
+journalnode          run the DFS journalnode
+mover                run a utility to move block replicas across storage types
+namenode             run the DFS namenode
+nfs3                 run an NFS version 3 gateway
+portmap              run a portmap service
+secondarynamenode    run the DFS secondary namenode
+sps                  run external storagepolicysatisfier
+zkfc                 run the ZK Failover Controller daemon
+
+SUBCOMMAND may print help when invoked w/o parameters or with -h.
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop dfs -ls
+WARNING: Use of this script to execute dfs is deprecated.
+WARNING: Attempting to execute replacement "hdfs dfs" instead.
+
+ls: `.': No such file or directory
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -mkdir newfile
+mkdir: `hdfs://localhost:9000/user/hadoop': No such file or directory
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -mkdir /newfile
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ cd
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ cat
+^C
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ cat file.txt
+cat: file.txt: No such file or directory
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ cat >file1.txt
+file
+^C
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ cat file1.txt
+file
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ pwd
+/home/hadoop
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -put /home/hadoop/file1.txt/newfile
+put: `.': No such file or directory: `hdfs://localhost:9000/user/hadoop'
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -put /home/hadoop/file1.txt /newfile
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ ls
+Desktop  Documents  Downloads  file1.txt  hadoop  hadoop-3.3.4.tar.gz  hadoopdata  Music  Pictures  Public  snap  Templates  Videos
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop -ls
+/home/hadoop/hadoop/libexec/hadoop-functions.sh: line 2386: HADOOP_-LS_USER: invalid variable name
+ERROR: -ls is not COMMAND nor fully qualified CLASSNAME.
+Usage: hadoop [OPTIONS] SUBCOMMAND [SUBCOMMAND OPTIONS]
+ or    hadoop [OPTIONS] CLASSNAME [CLASSNAME OPTIONS]
+  where CLASSNAME is a user-provided Java class
+
+  OPTIONS is none or any of:
+
+buildpaths                       attempt to add class files from build tree
+--config dir                     Hadoop config directory
+--debug                          turn on shell script debug mode
+--help                           usage information
+hostnames list[,of,host,names]   hosts to use in slave mode
+hosts filename                   list of hosts to use in slave mode
+loglevel level                   set the log4j level for this command
+workers                          turn on worker mode
+
+  SUBCOMMAND is one of:
+
+
+    Admin Commands:
+
+daemonlog     get/set the log level for each daemon
+
+    Client Commands:
+
+archive       create a Hadoop archive
+checknative   check native Hadoop and compression libraries availability
+classpath     prints the class path needed to get the Hadoop jar and the required libraries
+conftest      validate configuration XML files
+credential    interact with credential providers
+distch        distributed metadata changer
+distcp        copy file or directories recursively
+dtutil        operations related to delegation tokens
+envvars       display computed Hadoop environment variables
+fs            run a generic filesystem user client
+gridmix       submit a mix of synthetic job, modeling a profiled from production load
+jar <jar>     run a jar file. NOTE: please use "yarn jar" to launch YARN applications, not this command.
+jnipath       prints the java.library.path
+kdiag         Diagnose Kerberos Problems
+kerbname      show auth_to_local principal conversion
+key           manage keys via the KeyProvider
+rumenfolder   scale a rumen input trace
+rumentrace    convert logs into a rumen trace
+s3guard       manage metadata on S3
+trace         view and modify Hadoop tracing settings
+version       print the version
+
+    Daemon Commands:
+
+kms           run KMS, the Key Management Server
+registrydns   run the registry DNS server
+
+SUBCOMMAND may print help when invoked w/o parameters or with -h.
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -ls
+ls: `.': No such file or directory
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -ls/newfile
+-ls/newfile: Unknown command
+Usage: hadoop fs [generic options]
+	[-appendToFile <localsrc> ... <dst>]
+	[-cat [-ignoreCrc] <src> ...]
+	[-checksum [-v] <src> ...]
+	[-chgrp [-R] GROUP PATH...]
+	[-chmod [-R] <MODE[,MODE]... | OCTALMODE> PATH...]
+	[-chown [-R] [OWNER][:[GROUP]] PATH...]
+	[-concat <target path> <src path> <src path> ...]
+	[-copyFromLocal [-f] [-p] [-l] [-d] [-t <thread count>] [-q <thread pool queue size>] <localsrc> ... <dst>]
+	[-copyToLocal [-f] [-p] [-crc] [-ignoreCrc] [-t <thread count>] [-q <thread pool queue size>] <src> ... <localdst>]
+	[-count [-q] [-h] [-v] [-t [<storage type>]] [-u] [-x] [-e] [-s] <path> ...]
+	[-cp [-f] [-p | -p[topax]] [-d] [-t <thread count>] [-q <thread pool queue size>] <src> ... <dst>]
+	[-createSnapshot <snapshotDir> [<snapshotName>]]
+	[-deleteSnapshot <snapshotDir> <snapshotName>]
+	[-df [-h] [<path> ...]]
+	[-du [-s] [-h] [-v] [-x] <path> ...]
+	[-expunge [-immediate] [-fs <path>]]
+	[-find <path> ... <expression> ...]
+	[-get [-f] [-p] [-crc] [-ignoreCrc] [-t <thread count>] [-q <thread pool queue size>] <src> ... <localdst>]
+	[-getfacl [-R] <path>]
+	[-getfattr [-R] {-n name | -d} [-e en] <path>]
+	[-getmerge [-nl] [-skip-empty-file] <src> <localdst>]
+	[-head <file>]
+	[-help [cmd ...]]
+	[-ls [-C] [-d] [-h] [-q] [-R] [-t] [-S] [-r] [-u] [-e] [<path> ...]]
+	[-mkdir [-p] <path> ...]
+	[-moveFromLocal [-f] [-p] [-l] [-d] <localsrc> ... <dst>]
+	[-moveToLocal <src> <localdst>]
+	[-mv <src> ... <dst>]
+	[-put [-f] [-p] [-l] [-d] [-t <thread count>] [-q <thread pool queue size>] <localsrc> ... <dst>]
+	[-renameSnapshot <snapshotDir> <oldName> <newName>]
+	[-rm [-f] [-r|-R] [-skipTrash] [-safely] <src> ...]
+	[-rmdir [--ignore-fail-on-non-empty] <dir> ...]
+	[-setfacl [-R] [{-b|-k} {-m|-x <acl_spec>} <path>]|[--set <acl_spec> <path>]]
+	[-setfattr {-n name [-v value] | -x name} <path>]
+	[-setrep [-R] [-w] <rep> <path> ...]
+	[-stat [format] <path> ...]
+	[-tail [-f] [-s <sleep interval>] <file>]
+	[-test -[defswrz] <path>]
+	[-text [-ignoreCrc] <src> ...]
+	[-touch [-a] [-m] [-t TIMESTAMP (yyyyMMdd:HHmmss) ] [-c] <path> ...]
+	[-touchz <path> ...]
+	[-truncate [-w] <length> <path> ...]
+	[-usage [cmd ...]]
+
+Generic options supported are:
+-conf <configuration file>        specify an application configuration file
+-D <property=value>               define a value for a given property
+-fs <file:///|hdfs://namenode:port> specify default filesystem URL to use, overrides 'fs.defaultFS' property from configurations.
+-jt <local|resourcemanager:port>  specify a ResourceManager
+-files <file1,...>                specify a comma-separated list of files to be copied to the map reduce cluster
+-libjars <jar1,...>               specify a comma-separated list of jar files to be included in the classpath
+-archives <archive1,...>          specify a comma-separated list of archives to be unarchived on the compute machines
+
+The general command line syntax is:
+command [genericOptions] [commandOptions]
+
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -ls /newfile
+Found 1 items
+-rw-r--r--   1 hadoop supergroup          5 2023-04-27 11:48 /newfile/file1.txt
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -ls /newfile /file1.txt
+Found 1 items
+-rw-r--r--   1 hadoop supergroup          5 2023-04-27 11:48 /newfile/file1.txt
+ls: `/file1.txt': No such file or directory
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ echo "hello world" | hadoop fs -put - /home/hadoop/newfile/file1.txt
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ cat file1.txt
+file
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -cat /newfile/file1.txt
+file
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ echo "hello world" | hadoop fs -put - /home/hadoop/newfile/file2.txt
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -cat /newfile/file2.txt
+cat: `/newfile/file2.txt': No such file or directory
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -cat /newfile/file2.txt^C
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -cat /home/hadoop/newfile/file2.txt
+hello world
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -cat /home/hadoop/newfile/file1.txt
+hello world
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -ls
+ls: `.': No such file or directory
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -ls /
+Found 2 items
+drwxr-xr-x   - hadoop supergroup          0 2023-04-27 12:07 /home
+drwxr-xr-x   - hadoop supergroup          0 2023-04-27 11:48 /newfile
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -touchz /home/hadoop/newfile/file3.txt
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ $ hadoop fs -ls /newfile
+$: command not found
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ $ hadoop fs -ls /newfile
+$: command not found
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -ls /newfile
+Found 1 items
+-rw-r--r--   1 hadoop supergroup          5 2023-04-27 11:48 /newfile/file1.txt
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ ls
+Desktop  Documents  Downloads  file1.txt  hadoop  hadoop-3.3.4.tar.gz  hadoopdata  Music  Pictures  Public  snap  Templates  Videos
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ cat file1.txt
+file
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -ls /
+Found 2 items
+drwxr-xr-x   - hadoop supergroup          0 2023-04-27 12:07 /home
+drwxr-xr-x   - hadoop supergroup          0 2023-04-27 11:48 /newfile
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -cat /home/newfile
+cat: `/home/newfile': No such file or directory
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -cat /home/hadoop/newfile
+cat: `/home/hadoop/newfile': Is a directory
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -cat /home/hadoop/newfile/file1.txt
+hello world
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -appendToFile ~/file1.txt /home/hadoop/newfile/file1.txt
+hadoop@bmscecse-HP-Elite-Tower-600-G9-Desktop-PC:~$ hadoop fs -cat /home/hadoop/newfile/file1.txt
+hello world
+file
